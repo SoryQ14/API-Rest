@@ -1,0 +1,25 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "apis",
+  "main": "api.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SoryQ14/API-Rest.git"
+  },
+  "keywords": [
+    "apis"
+  ],
+  "author": "Soraya Quintana",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SoryQ14/API-Rest/issues"
+  },
+  "homepage": "https://github.com/SoryQ14/API-Rest#readme",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
