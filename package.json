@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/SoryQ14/API-Rest#readme",
   "dependencies": {
-    "express": "^4.19.2"
+    "express": "^4.19.2",
+    "mysql": "^2.18.1"
   }
 }
