@@ -33,7 +33,7 @@
     
             // Función para cargar la lista de usuarios desde la API
             function fetchUsers(){
-                fetch('http://localhost:3002/users')
+                fetch('http://192.168.0.34:3004/users')
                 .then(response => response.json())
                 .then(data => {
                     // Limpiar la lista de usuarios antes de agregar los nuevos
@@ -62,7 +62,7 @@
                 const nombre = document.getElementById('nombre').value;
                 const password = document.getElementById('password').value;
                 // Realizar una solicitud POST para agregar el nuevo usuario
-                fetch('http://localhost:3002/users', {
+                fetch('http://192.168.0.34:3004/users', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -92,7 +92,7 @@
                 const nombre = document.getElementById('nombre').value;
                 const password = document.getElementById('password').value; 
 
-                fetch(`http://localhost:3002/users/${id}`,{
+                fetch(`http://192.168.0.34:3004/users/${id}`,{
                     method:'PUT',
                     headers:{
                         'Content-Type': 'application/json'
@@ -124,7 +124,7 @@
                 }
                 const confirmDelete = confirm('¿Estás seguro de que quieres eliminar el usuario permanentemente?'); 
                 if(confirmDelete){
-                    fetch(`http://localhost:3002/users/${id}`,{
+                    fetch(`http://192.168.0.34:3004/users/${id}`,{
                         method: 'DELETE'
                     })
                     .then(response =>{
