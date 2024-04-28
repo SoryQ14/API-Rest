@@ -1,6 +1,9 @@
 //Requiere packeages and set the port
 const express = require('express'); 
 const port = 3002; 
+
+const cors = require('cors'); 
+
 //para permitit manejo de POST y PUT
 const bodyParser = require('body-parser'); 
 const routes = require('./routes/routes'); 
@@ -12,6 +15,7 @@ app.use(bodyParser.urlencoded({
     extended:true,
 })); 
 
+app.use(cors()); 
 routes(app); 
 
 //iniciar el servidor 
