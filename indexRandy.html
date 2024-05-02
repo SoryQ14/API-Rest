@@ -15,22 +15,24 @@
             <input type="text" id="userId" placeholder="ID del usuario">
             <label for="username">Usuario:</label>
             <input type="text" id="nombreUsuario" required>
-            <label for="password">Nombre Real:</label>
+            <label for="username">Nombre Real:</label>
             <input type="text" id="nombreReal" required>
+            <label for="password">Password:</label>
+            <input type="password" id="password" required>
         </form>
         <button type="submit" id="POST">Agregar Usuario (POST)</button>
         <button id="getUsersButton">Obtener Usuarios (GET)</button>
         <button id="updateUserButton">Actualizar Usuario (PUT)</button>
         <button id="deleteUserButton">Eliminar Usuario (DELETE)</button>
-        <p>Index Randy jsjsj</p>
+        <p>Index de randy<p>
+        <a href = "../index.html">regresar<p>
     </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function(){
             const userList = document.getElementById('userList'); 
             const userForm = document.getElementById('userForm'); 
-
-            const url = 'http://192.168.3.181:3002'; 
+            const url = "http://randyhubuntu.fullstack.com.mx:3002";
 
             // Función para cargar la lista de usuarios desde la API
             function fetchUsers(){
@@ -43,7 +45,8 @@
                     // Iterar sobre los datos para agregar cada usuario a la lista
                     data.forEach(user => {
                         const li = document.createElement('li');
-                        li.textContent = `(ID: ${user.id}), Nombre usuario: ${user.nombreUsuario}, Nombre real: ${user.nombreReal}`;
+                        li.textContent = `(ID: ${user.id}), Nombre usuario: ${user.nombreUsuario}, Nombre real: ${user.nombreReal}
+                        , Password SHA1: ${user.passwordsha1} , Password sha256: ${user.passwordsha256}, password md5: ${user.passwordm5}, password sin hash: ${user.password}`;
                         userList.appendChild(li);
                     });
 
@@ -54,6 +57,8 @@
                 document.getElementById('nombreUsuario').value = ''; 
                 document.getElementById('userId').value = ''; 
                 document.getElementById('nombreReal').value = '';
+                document.getElementById('password').value = '';
+
             }
 
             document.getElementById('getUsersButton').addEventListener('click', function() {
@@ -67,13 +72,14 @@
                 event.preventDefault(); // Evitar el comportamiento predeterminado de enviar el formulario
                 const nombreUsuario = document.getElementById('nombreUsuario').value;
                 const nombreReal = document.getElementById('nombreReal').value;
+                const password = document.getElementById('password').value;
                 fetch(url+'/users', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'//,
                         //'Access-Control-Allow-Origin': '*'
                     },
-                    body: JSON.stringify({ nombreUsuario, nombreReal })
+                    body: JSON.stringify({ nombreUsuario, nombreReal, password})
                 })
                 .then(response => {
                     if (response.ok) {
@@ -88,18 +94,22 @@
                 document.getElementById('nombreUsuario').value = '';
                 document.getElementById('userId').value = ''; 
                 document.getElementById('nombreReal').value = ''; 
+                document.getElementById('password').value = '';
+
             });
 
             document.getElementById('updateUserButton').addEventListener('click', function() {
                 const userId = document.getElementById('userId').value; // Obtener el ID del campo correspondiente
                 const nombreUsuario = document.getElementById('nombreUsuario').value;
                 const nombreReal = document.getElementById('nombreReal').value;
+                const password = document.getElementById('password').value;
+
                 fetch(url+`/users/${userId}`, {
                     method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify({ nombreUsuario, nombreReal })
+                    body: JSON.stringify({ nombreUsuario, nombreReal, password})
                 })
                 .then(response => {
                     if (response.ok) {
@@ -116,6 +126,8 @@
                 document.getElementById('nombreUsuario').value = ''; 
                 document.getElementById('userId').value = ''; 
                 document.getElementById('nombreReal').value = '';
+                document.getElementById('password').value = '';
+
             });
 
             document.getElementById('deleteUserButton').addEventListener('click', function() {
@@ -145,6 +157,8 @@
                 document.getElementById('nombreUsuario').value = '';
                 document.getElementById('userId').value = ''; 
                 document.getElementById('nombreReal').value = '';
+                document.getElementById('password').value = '';
+
             });
 
         });
