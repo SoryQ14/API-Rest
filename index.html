@@ -41,7 +41,7 @@
                     // Iterar sobre los datos para agregar cada usuario a la lista
                     data.forEach(user => {
                         const li = document.createElement('li');
-                        li.textContent = `(ID:${user.id}), Nombre de usuario: ${user.nombre}`; // Suponiendo que cada usuario tiene un campo 'username'
+                        li.textContent = `(ID:${user.id}), Nombre de usuario: ${user.nombre}, Contraseña: ${user.password} `; // Suponiendo que cada usuario tiene un campo 'username'
                         userList.appendChild(li);
                     });
                 })
